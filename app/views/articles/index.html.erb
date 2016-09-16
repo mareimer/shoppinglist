@@ -1,0 +1,21 @@
+<h1>Listing items to shop</h1>
+<table>
+  <tr>
+    <th>Menge</th>
+	<th>Einheit</th>
+    <th>Bezeichnung</th>
+	<th colspan="2"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.amount %></td>
+      <td><%= article.unit %></td>
+      <td><%= article.title %></td>	  
+	  <td> </td>
+	  <td><%= link_to 'Edit', edit_article_path(article) %></td>
+	  <td><%= link_to 'Entfernen', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+	<%= link_to 'Artikel hinzufügen', new_article_path %>
